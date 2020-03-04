@@ -7,20 +7,21 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Leachim&#39;s Blog</title>
+<title>CF1304D Shortest and Longest LIS - Leachim&#39;s Blog</title>
 
 
-    <meta name="description" content="A personal blog for algorithm in competitive programming.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Leachim&#39;s Blog">
-<meta property="og:url" content="leachim.wang/">
+    <meta name="description" content="D. Shortest and Longest LIS原题传送门 Problem Restatement给出一个序列相邻的大小关系，构造相应长度满足大小关系的排列，使得最长上升子序列最短或最长。 Solution考虑到给出的是相邻的递增递减，我们会发现序列是由一段上坡一段下坡类似组合而成。而上坡的地方肯定是最长上升子序列。 定义：坑 &#x3D; 一个下坡（或没有）+一个上坡。 所以我们可以很容易得出最短的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF1304D Shortest and Longest LIS">
+<meta property="og:url" content="leachim.wang/Codeforces/Round-620-Div-2/CF1304D/">
 <meta property="og:site_name" content="Leachim&#39;s Blog">
-<meta property="og:description" content="A personal blog for algorithm in competitive programming.">
+<meta property="og:description" content="D. Shortest and Longest LIS原题传送门 Problem Restatement给出一个序列相邻的大小关系，构造相应长度满足大小关系的排列，使得最长上升子序列最短或最长。 Solution考虑到给出的是相邻的递增递减，我们会发现序列是由一段上坡一段下坡类似组合而成。而上坡的地方肯定是最长上升子序列。 定义：坑 &#x3D; 一个下坡（或没有）+一个上坡。 所以我们可以很容易得出最短的">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="/images/og_image.png">
+<meta property="article:published_time" content="2020-03-04T09:32:09.183Z">
+<meta property="article:modified_time" content="2020-03-04T09:35:27.273Z">
 <meta property="article:author" content="Mengxi Wang">
-<meta property="article:tag" content="competitive programming">
-<meta property="article:tag" content=" algorithm">
+<meta property="article:tag" content="贪心 Greedy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="/images/og_image.png">
 
@@ -90,7 +91,7 @@
             
             <div class="navbar-start">
                 
-                <a class="navbar-item is-active"
+                <a class="navbar-item"
                 href="/">Home</a>
                 
                 <a class="navbar-item"
@@ -132,60 +133,6 @@
         <div class="container">
             <div class="columns">
                 <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 502 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Codeforces/Round-620-Div-2/CF1304C/">CF1304C Air Conditioner</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="C-Air-Conditioner"><a href="#C-Air-Conditioner" class="headerlink" title="C. Air Conditioner"></a>C. Air Conditioner</h1><p><a href="https://codeforces.com/contest/1304/problem/C">原题传送门</a></p>
-<h3 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>Gildong的餐厅每单位时间最多上下调整$1$单位温度。</p>
-<p>对于某些时刻，总共给出$n$个区间，问是否可以使得每一时刻的温度保持在这些区间里面。</p>
-<p>$(1≤𝑛≤100)$</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>有点像“接元宝”那一类的题。不过这题只需要判断是否可以，而不需要找到最多能保证多少个。那么问题就很简单了。</p>
-<p>抛开限制区间思考，从初始温度$m$开始，经过$1$单位时间，其实就相当于可以存在的温度变成一个区间$[m-1,m+1]$。以此类推我们可以求出来，无“限制区间”情况下，任意时刻的可调节温度区间。</p>
-<p>讨论限制区间时，首先，如果能保持温度在限制区间里面，那么同一时刻的多个区间必须有一个公共区间或者公共点。所以我们只需要对这个公共区间/点进行讨论即可。所以我们可以认定，同一时刻只有一个限制区间。</p>
-<p>限制区间本身已经排好序，所以我们只需要按照时间顺序，合并同一时刻区间，然后按顺序判断是否任一时刻<strong>可调节温度区间</strong>与<strong>限制区间</strong>是否有重叠区间即可，同时也合并区间。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,tl,tr;</span><br><span class="line"><span class="keyword">int</span> ti[<span class="number">105</span>],l[<span class="number">105</span>],r[<span class="number">105</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;ti[i], &amp;l[i], &amp;r[i]);</span><br><span class="line">	tl=tr=m;</span><br><span class="line">	ti[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;=n;i=j)&#123;</span><br><span class="line">		tl-=ti[i]-ti[i<span class="number">-1</span>], tr+=ti[i]-ti[i<span class="number">-1</span>];</span><br><span class="line">		tl=<span class="built_in">max</span>(tl,l[i]), tr=<span class="built_in">min</span>(tr,r[i]);</span><br><span class="line">		<span class="keyword">for</span>(j=i+<span class="number">1</span>;j&lt;=n &amp;&amp; ti[j]==ti[j<span class="number">-1</span>];j++)&#123;</span><br><span class="line">			tl=<span class="built_in">max</span>(tl,l[j]);</span><br><span class="line">			tr=<span class="built_in">min</span>(tr,r[j]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(tl&gt;tr)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"NO\n"</span>);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"YES\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
 <div class="card">
     
     <div class="card-content article ">
@@ -211,7 +158,7 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/Codeforces/Round-620-Div-2/CF1304D/">CF1304D Shortest and Longest LIS</a>
+                CF1304D Shortest and Longest LIS
             
         </h1>
         <div class="content">
@@ -226,57 +173,15 @@
 
         </div>
         
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-04T09:23:47.564Z">2020-03-04</time>
-                
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/%E8%B4%AA%E5%BF%83-Greedy/" rel="tag">贪心 Greedy</a>
                 </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    2 minutes read (About 286 words)
-                </span>
-                
-                
             </div>
         </div>
         
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Codeforces/Round-620-Div-2/CF1304B/">CF1304B Longest Palindrome</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="B-Longest-Palindrome"><a href="#B-Longest-Palindrome" class="headerlink" title="B. Longest Palindrome"></a>B. Longest Palindrome</h1><p><a href="https://codeforces.com/contest/1304/problem/B">原题传送门</a></p>
-<h3 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>给出n个，长度为m的字符串。$(1≤𝑛≤100,1≤m≤50) $</p>
-<p>用部分或全部字符串，在一定的顺序拼接下，拼出最长的回文串。</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>数据小，直接配对即可。</p>
-<p>对于每个串寻找是否存在其共轭串（即一正一反），若存在则放置在串两头。</p>
-<p>否则，看是否该串本就是回文，若是则放置中间。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ispair</span><span class="params">(<span class="keyword">char</span> *s1,<span class="keyword">char</span> *s2)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s1[i]!=s2[m-i<span class="number">-1</span>]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">ispalindrome</span><span class="params">(<span class="keyword">char</span> *s1)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s1[i]!=s1[m-i<span class="number">-1</span>]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[<span class="number">105</span>][<span class="number">105</span>];</span><br><span class="line"><span class="keyword">bool</span> flag[<span class="number">105</span>];</span><br><span class="line"><span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; li;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s[i]);</span><br><span class="line">	<span class="built_in">memset</span>(flag+<span class="number">1</span>,<span class="number">0</span>,n*<span class="keyword">sizeof</span>(flag[<span class="number">0</span>]));</span><br><span class="line">	li.<span class="built_in">clear</span>();</span><br><span class="line">	<span class="keyword">int</span> mid=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(flag[i]) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(flag[j]) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="keyword">if</span>(ispair(s[i],s[j]))&#123;</span><br><span class="line">				flag[i]=flag[j]=<span class="number">1</span>;</span><br><span class="line">				li.push_front(i);</span><br><span class="line">				li.push_back(j);</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(!flag[i] &amp;&amp; !mid)&#123;</span><br><span class="line">			<span class="keyword">if</span>(ispalindrome(s[i])) mid=i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(mid) <span class="built_in">printf</span>(<span class="string">"%lu\n"</span>, m*li.<span class="built_in">size</span>()+m);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%lu\n"</span>, m*li.<span class="built_in">size</span>());</span><br><span class="line">	<span class="keyword">if</span>(li.<span class="built_in">size</span>()==<span class="number">0</span> &amp;&amp; mid)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s[mid]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">auto</span> t:li)&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%s"</span>, s[t]);</span><br><span class="line">			<span class="keyword">if</span>(cnt==li.<span class="built_in">size</span>()/<span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">"%s"</span>, s[mid]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="comment">// scanf("%d", &amp;T);</span></span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div>
-        
         
         
     </div>
@@ -286,55 +191,26 @@
 
 
 
-
-
-
-    
-<div class="card">
-    
-    <div class="card-content article ">
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-03-04T08:22:57.079Z">2020-03-04</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    a minute read (About 121 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/Codeforces/Round-620-Div-2/CF1304A/">CF1304A Two Rabbits</a>
-            
-        </h1>
-        <div class="content">
-            <h1 id="A-Two-Rabbits"><a href="#A-Two-Rabbits" class="headerlink" title="A.  Two Rabbits"></a>A.  Two Rabbits</h1><p><a href="https://codeforces.com/contest/1304/problem/A">原题传送门</a></p>
-<h3 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>两个兔子以恒定速度相向而行，求相遇时间？若无法在整时间相遇，输出$-1$</p>
-<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>相遇问题，距离除以总速度为时间，看时间是否为整数即可。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x,y,a,b;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d %d %d"</span>, &amp;x, &amp;y, &amp;a, &amp;b);</span><br><span class="line">	<span class="keyword">if</span>((y-x)%(a+b)==<span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, (y-x)/(a+b));</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"-1\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/Codeforces/Round-620-Div-2/CF1304C/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">CF1304C Air Conditioner</span>
+            </a>
         </div>
         
         
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/Codeforces/Round-620-Div-2/CF1304B/">
+                <span class="level-item">CF1304B Longest Palindrome</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
         
     </div>
 </div>
-
-
-
-
-
-
 
 
 </div>

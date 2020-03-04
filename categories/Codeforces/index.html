@@ -203,6 +203,59 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    3 minutes read (About 405 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/Codeforces/Round-620-Div-2/CF1304D/">CF1304D Shortest and Longest LIS</a>
+            
+        </h1>
+        <div class="content">
+            <h1 id="D-Shortest-and-Longest-LIS"><a href="#D-Shortest-and-Longest-LIS" class="headerlink" title="D. Shortest and Longest LIS"></a>D. Shortest and Longest LIS</h1><p><a href="https://codeforces.com/contest/1304/problem/D">原题传送门</a></p>
+<h3 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>给出一个序列相邻的大小关系，构造相应长度满足大小关系的<strong>排列</strong>，使得最长上升子序列最短或最长。</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>考虑到给出的是相邻的递增递减，我们会发现序列是由一段上坡一段下坡类似组合而成。而上坡的地方肯定是最长上升子序列。</p>
+<p>定义：坑 = 一个下坡（或没有）+一个上坡。</p>
+<p>所以我们可以很容易得出最短的最长上升子序列，最短为其中最长的“上坡”。那么我们只需要保证这些上坡不会被前面和后面续上即可。我们实际构造采取贪心，从最左边的坑开始从大到小填数即可。</p>
+<p>同理，最长的最长上升子序列，即让所有的上坡都续上，可以证明续上最多可以为（上坡的元素个数之和 - 上坡的个数 + 1）。同样，贪心构造即可，从左边开始，下坡倒着填，上坡顺着填。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[MAXN];</span><br><span class="line"><span class="keyword">char</span> s[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cnt,rcnt;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,n*<span class="keyword">sizeof</span>(a[<span class="number">0</span>]));</span><br><span class="line">	rcnt=n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j,k;i&lt;=n<span class="number">-1</span>;i=j+<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=n<span class="number">-2</span> &amp;&amp; s[i]==<span class="string">'&gt;'</span>) a[i++]=rcnt--;</span><br><span class="line">		<span class="keyword">for</span>(j=i;j&lt;=n<span class="number">-2</span> &amp;&amp; s[j]==<span class="string">'&lt;'</span>;j++);</span><br><span class="line">		<span class="keyword">for</span>(k=j;k&gt;=i;k--) a[k]=rcnt--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">	<span class="built_in">memset</span>(a,<span class="number">0</span>,n*<span class="keyword">sizeof</span>(a[<span class="number">0</span>]));</span><br><span class="line">	cnt=<span class="number">1</span>,rcnt=n;</span><br><span class="line">	<span class="keyword">if</span>(s[n<span class="number">-2</span>]==<span class="string">'&lt;'</span>) a[n<span class="number">-1</span>]=rcnt--;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n<span class="number">-2</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[i]==<span class="string">'&lt;'</span>) a[i]=cnt++;</span><br><span class="line">		<span class="keyword">else</span> a[i]=rcnt--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(s[n<span class="number">-2</span>]==<span class="string">'&gt;'</span>) a[n<span class="number">-1</span>]=cnt;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">	<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    
+<div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
                 <time class="level-item has-text-grey" datetime="2020-03-04T09:23:47.564Z">2020-03-04</time>
                 
                 <div class="level-item">
@@ -340,7 +393,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -360,11 +413,11 @@
             <div class="level-item has-text-centered is-marginless">
                 <div>
                     <p class="heading">
-                        Tag
+                        Tags
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            1
+                            2
                         </p>
                     </a>
                 </div>
@@ -453,7 +506,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/%E7%AD%BE%E5%88%B0%E9%A2%98/" style="font-size: 10px;">签到题</a>
+        <a href="/tags/%E7%AD%BE%E5%88%B0%E9%A2%98/" style="font-size: 20px;">签到题</a> <a href="/tags/%E8%B4%AA%E5%BF%83-Greedy/" style="font-size: 10px;">贪心 Greedy</a>
     </div>
 </div>
     
@@ -474,7 +527,7 @@
                 <span class="level-item">Codeforces</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Codeforces/Round-620-Div-2/">
@@ -482,7 +535,7 @@
                 <span class="level-item">Round 620 (Div. 2)</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -508,6 +561,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time></div>
                     <a href="/Codeforces/Round-620-Div-2/CF1304C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CF1304C Air Conditioner</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a> / <a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Codeforces/Round-620-Div-2/CF1304D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CF1304D Shortest and Longest LIS">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time></div>
+                    <a href="/Codeforces/Round-620-Div-2/CF1304D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CF1304D Shortest and Longest LIS</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a> / <a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
                     </p>
@@ -570,7 +642,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -592,6 +664,13 @@
                     <a class="tags has-addons" href="/tags/%E7%AD%BE%E5%88%B0%E9%A2%98/">
                         <span class="tag">签到题</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83-Greedy/">
+                        <span class="tag">贪心 Greedy</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
@@ -625,7 +704,7 @@
                 <span class="level-item">Codeforces</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a><ul><li>
         <a class="level is-marginless" href="/categories/Codeforces/Round-620-Div-2/">
@@ -633,7 +712,7 @@
                 <span class="level-item">Round 620 (Div. 2)</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">3</span>
+                <span class="level-item tag">4</span>
             </span>
         </a></li></ul></li>
             </ul>
@@ -659,6 +738,25 @@
                 <div class="content">
                     <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time></div>
                     <a href="/Codeforces/Round-620-Div-2/CF1304C/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CF1304C Air Conditioner</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a> / <a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/Codeforces/Round-620-Div-2/CF1304D/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="CF1304D Shortest and Longest LIS">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2020-03-04T09:32:09.183Z">2020-03-04</time></div>
+                    <a href="/Codeforces/Round-620-Div-2/CF1304D/" class="title has-link-black-ter is-size-6 has-text-weight-normal">CF1304D Shortest and Longest LIS</a>
                     <p class="is-size-7 is-uppercase">
                         <a class="has-link-grey -link" href="/categories/Codeforces/">Codeforces</a> / <a class="has-link-grey -link" href="/categories/Codeforces/Round-620-Div-2/">Round 620 (Div. 2)</a>
                     </p>
@@ -721,7 +819,7 @@
                     <span class="level-item">March 2020</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">4</span>
                 </span>
             </a>
         </li>
@@ -743,6 +841,13 @@
                     <a class="tags has-addons" href="/tags/%E7%AD%BE%E5%88%B0%E9%A2%98/">
                         <span class="tag">签到题</span>
                         <span class="tag is-grey">3</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/%E8%B4%AA%E5%BF%83-Greedy/">
+                        <span class="tag">贪心 Greedy</span>
+                        <span class="tag is-grey">1</span>
                     </a>
                 </div>
                 
