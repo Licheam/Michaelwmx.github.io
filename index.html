@@ -163,6 +163,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="leachim.wang/Template/Data-Structure/Scanline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Leachim">
+      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leachim's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/Template/Data-Structure/Scanline/" class="post-title-link" itemprop="url">扫描线 Scanline Rendering</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-07 16:26:59 / Modified: 16:58:35" itemprop="dateCreated datePublished" datetime="2020-03-07T16:26:59+08:00">2020-03-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Template/" itemprop="url" rel="index"><span itemprop="name">Template</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Template/Data-Structure/" itemprop="url" rel="index"><span itemprop="name">Data Structure</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Scanline-Rendering"><a href="#Scanline-Rendering" class="headerlink" title="Scanline Rendering"></a>Scanline Rendering</h1><h2 id="扫描线"><a href="#扫描线" class="headerlink" title="扫描线"></a>扫描线</h2><p><a href="https://www.luogu.com.cn/problem/P5490" target="_blank" rel="noopener">模板题</a></p>
+<h3 id="Brief-Introduction"><a href="#Brief-Introduction" class="headerlink" title="Brief Introduction"></a>Brief Introduction</h3><blockquote>
+<p><strong>Scanline rendering</strong> (also <strong>scan line rendering</strong> and <strong>scan-line rendering</strong>) is an algorithm for <a href="https://en.wikipedia.org/wiki/Hidden_surface_determination#Visible_surface_determination" target="_blank" rel="noopener">visible surface determination</a>, in <a href="https://en.wikipedia.org/wiki/3D_computer_graphics" target="_blank" rel="noopener">3D computer graphics</a>, that works on a row-by-row basis rather than a <a href="https://en.wikipedia.org/wiki/Polygon" target="_blank" rel="noopener">polygon</a>-by-polygon or <a href="https://en.wikipedia.org/wiki/Pixel" target="_blank" rel="noopener">pixel</a>-by-pixel basis. All of the polygons to be rendered are first sorted by the top y coordinate at which they first appear, then each row or <a href="https://en.wikipedia.org/wiki/Scan_line" target="_blank" rel="noopener">scan line</a> of the image is computed using the intersection of a scanline with the polygons on the front of the sorted list, while the sorted list is updated to discard no-longer-visible polygons as the active scan line is advanced down the picture.</p>
+</blockquote>
+<p><img src="Scanline_1.png" alt="Wikipedia"></p>
+<h3 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h3><p>To be updated</p>
+<h3 id="Template-Code"><a href="#Template-Code" class="headerlink" title="Template Code"></a>Template Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 100005</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	LL sum,tag;</span><br><span class="line">&#125;sgt[MAXN&lt;&lt;<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> M;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">built</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(M=<span class="number">1</span>;M&lt;n+<span class="number">2</span>;M&lt;&lt;=<span class="number">1</span>);</span><br><span class="line">	<span class="built_in">memset</span>(sgt+M,<span class="number">0</span>,M*<span class="keyword">sizeof</span>(sgt[<span class="number">0</span>]));</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		sgt[M+i].sum=a[i];</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=M<span class="number">-1</span>;i;i--)</span><br><span class="line">		sgt[i].sum=sgt[i&lt;&lt;<span class="number">1</span>].sum+sgt[i&lt;&lt;<span class="number">1</span>|<span class="number">1</span>].sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,LL del)</span></span>&#123;</span><br><span class="line">	LL len=<span class="number">1</span>,lc=<span class="number">0</span>,rc=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(l=l+M<span class="number">-1</span>,r=r+M+<span class="number">1</span>;l^r^<span class="number">1</span>;l&gt;&gt;=<span class="number">1</span>,r&gt;&gt;=<span class="number">1</span>,len&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(~l&amp;<span class="number">1</span>) sgt[l+<span class="number">1</span>].tag+=del, lc+=len;</span><br><span class="line">		<span class="keyword">if</span>(r&amp;<span class="number">1</span>) sgt[r<span class="number">-1</span>].tag+=del, rc+=len;</span><br><span class="line">		sgt[l&gt;&gt;<span class="number">1</span>].sum+=del*lc;</span><br><span class="line">		sgt[r&gt;&gt;<span class="number">1</span>].sum+=del*rc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(lc+=rc,l&gt;&gt;=<span class="number">1</span>;l;l&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">		sgt[l].sum+=del*lc;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	LL res=<span class="number">0</span>,len=<span class="number">1</span>,lc=<span class="number">0</span>,rc=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(l=l+M<span class="number">-1</span>,r=r+M+<span class="number">1</span>;l^r^<span class="number">1</span>;l&gt;&gt;=<span class="number">1</span>,r&gt;&gt;=<span class="number">1</span>,len&lt;&lt;=<span class="number">1</span>)&#123;</span><br><span class="line">		<span class="keyword">if</span>(~l&amp;<span class="number">1</span>) res+=sgt[l+<span class="number">1</span>].sum+sgt[l+<span class="number">1</span>].tag*len, lc+=len;</span><br><span class="line">		<span class="keyword">if</span>(r&amp;<span class="number">1</span>) res+=sgt[r<span class="number">-1</span>].sum+sgt[r<span class="number">-1</span>].tag*len, rc+=len;</span><br><span class="line">		res+=sgt[l&gt;&gt;<span class="number">1</span>].tag*lc;</span><br><span class="line">		res+=sgt[r&gt;&gt;<span class="number">1</span>].tag*rc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(lc+=rc,l&gt;&gt;=<span class="number">1</span>;l;l&gt;&gt;=<span class="number">1</span>)</span><br><span class="line">		res+=sgt[l].tag*lc;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n,m;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">	built(n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> opt,x,y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d %d %d"</span>, &amp;opt, &amp;x, &amp;y);</span><br><span class="line">		<span class="keyword">if</span>(opt==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="keyword">int</span> k;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;k);</span><br><span class="line">			modify(x,y,k);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, query(x,y));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Round-622-Div-2/CF1313C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -981,20 +1059,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
