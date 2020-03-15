@@ -28,14 +28,14 @@
 <meta property="og:site_name" content="Leachim&#39;s Blog">
 <meta property="og:description" content="F. Animal Observation原题传送门 Problem Restatement给出一个$n\times m$的自然数矩阵，给定$k$。在矩阵的每一行选一个点，作为左上角，放置一个$2\times k$的矩阵块（如果是最后一行，则放置$1\times k$的矩阵块）。现在要使得，这些矩阵块所覆盖自然数之和最大，求最大值。 $(1≤𝑛≤50,\ 1≤k\leq 𝑚≤2⋅10^4,\">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="leachim.wang/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png">
+<meta property="og:image" content="/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png">
 <meta property="article:published_time" content="2020-03-04T13:57:03.000Z">
-<meta property="article:modified_time" content="2020-03-05T02:57:32.127Z">
+<meta property="article:modified_time" content="2020-03-15T04:14:12.029Z">
 <meta property="article:author" content="Leachim">
 <meta property="article:tag" content="动态规划 Dynamic Programming">
 <meta property="article:tag" content="线段树 Segment Tree">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="leachim.wang/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png">
+<meta name="twitter:image" content="/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png">
 
 <link rel="canonical" href="leachim.wang/Codeforces/Round-620-Div-2/CF1304F/">
 
@@ -194,7 +194,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-05 10:57:32" itemprop="dateModified" datetime="2020-03-05T10:57:32+08:00">2020-03-05</time>
+                <time title="Modified: 2020-03-15 12:14:12" itemprop="dateModified" datetime="2020-03-15T12:14:12+08:00">2020-03-15</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -211,6 +211,27 @@
             </span>
 
           
+            <span id="/Codeforces/Round-620-Div-2/CF1304F/" class="post-meta-item leancloud_visitors" data-flag-title="CF1304F Animal Observation" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/Codeforces/Round-620-Div-2/CF1304F/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-620-Div-2/CF1304F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -225,7 +246,8 @@
 <h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>给出一个$n\times m$的自然数矩阵，给定$k$。在矩阵的每一行选一个点，作为左上角，放置一个$2\times k$的矩阵块（如果是最后一行，则放置$1\times k$的矩阵块）。现在要使得，这些矩阵块所覆盖自然数之和最大，求最大值。</p>
 <p>$(1≤𝑛≤50,\ 1≤k\leq 𝑚≤2⋅10^4,\ 0\leq a_{ij}\leq 1000) $</p>
 <p>如图便是一个$4\times 5$的矩阵，其中$k=2$，即$2\times 2$的矩阵块（红色和蓝色为矩阵块）为，该放置的所求即为其覆盖的数字之和（重复的只计算一遍）。</p>
-<p><img src="CF1304F_1.png" alt="Test Case 1"></p>
+<img data-src="/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png" class="" title="Test Case 1">
+<a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>从<strong>分治（<del>动态规划</del>）</strong>的角度思考，也就是每一行每一列之间的转移。</p>
 <p>定义$dp[i][j]$为只考虑原矩阵有$i\times m$个元素的时候，选择第$i$行的第$j$个元素作为第$i$行的矩阵块左上角元素时，覆盖数之和最大值。</p>
 <p>也就是说$ans=\max(dp[n][j])$</p>
@@ -282,6 +304,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -523,11 +546,40 @@
     MathJax.texReset();
     MathJax.typeset();
   }
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 
     
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'ONbQWK2LS4IoC3qUcLNLsCgE-gzGzoHsz',
+      appKey     : 'M2iFBJBLEBbDCzh9k9ThWRTc',
+      placeholder: "Leave a Comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>

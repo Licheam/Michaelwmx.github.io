@@ -29,7 +29,7 @@
 <meta property="og:description" content="C. Skyscrapers原题传送门 Problem Restatement第一行有一个整数 $n\ (1 \leq n \leq 500000)$，表示发展商购买了 $n$ 块地。 第二行，$n$ 个整数 $m_1, m_2, \ldots, m_n\ (1 \leq m_i \leq 10^9)$，表示每块地上建摩天大厦层数的限制。 求让每块地上摩天大厦的楼层数之和最大，而且存在最高点$a_">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-05T14:00:17.000Z">
-<meta property="article:modified_time" content="2020-03-05T14:00:53.155Z">
+<meta property="article:modified_time" content="2020-03-15T03:55:31.698Z">
 <meta property="article:author" content="Leachim">
 <meta property="article:tag" content="线段树 Segment Tree">
 <meta property="article:tag" content="单调栈 Monotonic Stack">
@@ -184,10 +184,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-05 22:00:17 / Modified: 22:00:53" itemprop="dateCreated datePublished" datetime="2020-03-05T22:00:17+08:00">2020-03-05</time>
+              <time title="Created: 2020-03-05 22:00:17" itemprop="dateCreated datePublished" datetime="2020-03-05T22:00:17+08:00">2020-03-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-15 11:55:31" itemprop="dateModified" datetime="2020-03-15T11:55:31+08:00">2020-03-15</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -203,6 +209,27 @@
             </span>
 
           
+            <span id="/Codeforces/Round-622-Div-2/CF1313C/" class="post-meta-item leancloud_visitors" data-flag-title="CF1313C Skyscrapers" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/Codeforces/Round-622-Div-2/CF1313C/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-622-Div-2/CF1313C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -217,6 +244,7 @@
 <h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>第一行有一个整数 $n\ (1 \leq n \leq 500000)$，表示发展商购买了 $n$ 块地。</p>
 <p>第二行，$n$ 个整数 $m_1, m_2, \ldots, m_n\ (1 \leq m_i \leq 10^9)$，表示每块地上建摩天大厦层数的限制。</p>
 <p>求让每块地上摩天大厦的楼层数之和最大，而且存在最高点$a_i$，让它左边的楼递增，右边的楼递减。</p>
+<a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$O(n^2)$的做法就不赘述了。</p>
 <p>关键在于在遍历最高点的时候，如何快速计算出其左右两边依次递减之和。</p>
 <p>首先可以想到遍历用线段树维护区间和，然后二分找到上一个比该节点大的点，后面全部区间染色成$m[i]$即可。复杂度$O(nlog^2n)$。代码可参见<a href="https://codeforces.com/contest/1313/submission/71693226" target="_blank" rel="noopener">Codeforces Submission</a>。</p>
@@ -261,6 +289,7 @@
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -502,11 +531,40 @@
     MathJax.texReset();
     MathJax.typeset();
   }
-</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</script>
 
     
 
   
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'ONbQWK2LS4IoC3qUcLNLsCgE-gzGzoHsz',
+      appKey     : 'M2iFBJBLEBbDCzh9k9ThWRTc',
+      placeholder: "Leave a Comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
