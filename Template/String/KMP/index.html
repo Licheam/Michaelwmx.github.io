@@ -21,21 +21,20 @@
     var CONFIG = {"hostname":"leachim.wang","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="C. Skyscrapers原题传送门 Problem Restatement第一行有一个整数 $n\ (1 \leq n \leq 500000)$，表示发展商购买了 $n$ 块地。 第二行，$n$ 个整数 $m_1, m_2, \ldots, m_n\ (1 \leq m_i \leq 10^9)$，表示每块地上建摩天大厦层数的限制。 求让每块地上摩天大厦的楼层数之和最大，而且存在最高点$a_">
+  <meta name="description" content="KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm模板题 Brief IntroductionTo be updated">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CF1313C Skyscrapers">
-<meta property="og:url" content="leachim.wang/Codeforces/Round-622-Div-2/CF1313C/">
+<meta property="og:title" content="KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm">
+<meta property="og:url" content="leachim.wang/Template/String/KMP/">
 <meta property="og:site_name" content="Leachim&#39;s Blog">
-<meta property="og:description" content="C. Skyscrapers原题传送门 Problem Restatement第一行有一个整数 $n\ (1 \leq n \leq 500000)$，表示发展商购买了 $n$ 块地。 第二行，$n$ 个整数 $m_1, m_2, \ldots, m_n\ (1 \leq m_i \leq 10^9)$，表示每块地上建摩天大厦层数的限制。 求让每块地上摩天大厦的楼层数之和最大，而且存在最高点$a_">
+<meta property="og:description" content="KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm模板题 Brief IntroductionTo be updated">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-05T14:00:17.000Z">
-<meta property="article:modified_time" content="2020-03-15T03:55:31.698Z">
+<meta property="article:published_time" content="2020-03-22T19:10:27.000Z">
+<meta property="article:modified_time" content="2020-03-22T19:13:31.913Z">
 <meta property="article:author" content="Leachim">
-<meta property="article:tag" content="线段树 Segment Tree">
-<meta property="article:tag" content="单调栈 Monotonic Stack">
+<meta property="article:tag" content="字符串模式匹配 Knuth–Morris–Pratt Algorithm">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="leachim.wang/Codeforces/Round-622-Div-2/CF1313C/">
+<link rel="canonical" href="leachim.wang/Template/String/KMP/">
 
 
 <script id="page-configurations">
@@ -47,7 +46,7 @@
   };
 </script>
 
-  <title>CF1313C Skyscrapers | Leachim's Blog</title>
+  <title>KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm | Leachim's Blog</title>
   
 
 
@@ -162,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Round-622-Div-2/CF1313C/">
+    <link itemprop="mainEntityOfPage" href="leachim.wang/Template/String/KMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -175,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          CF1313C Skyscrapers
+          KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm
         </h1>
 
         <div class="post-meta">
@@ -184,32 +183,26 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-03-05 22:00:17" itemprop="dateCreated datePublished" datetime="2020-03-05T22:00:17+08:00">2020-03-05</time>
+              <time title="Created: 2020-03-23 03:10:27 / Modified: 03:13:31" itemprop="dateCreated datePublished" datetime="2020-03-23T03:10:27+08:00">2020-03-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-15 11:55:31" itemprop="dateModified" datetime="2020-03-15T11:55:31+08:00">2020-03-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
+                  <a href="/categories/Template/" itemprop="url" rel="index"><span itemprop="name">Template</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Round-622-Div-2/" itemprop="url" rel="index"><span itemprop="name">Round 622 (Div. 2)</span></a>
+                  <a href="/categories/Template/String/" itemprop="url" rel="index"><span itemprop="name">String</span></a>
                 </span>
             </span>
 
           
-            <span id="/Codeforces/Round-622-Div-2/CF1313C/" class="post-meta-item leancloud_visitors" data-flag-title="CF1313C Skyscrapers" title="Views">
+            <span id="/Template/String/KMP/" class="post-meta-item leancloud_visitors" data-flag-title="KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -224,8 +217,8 @@
       </span>
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/Codeforces/Round-622-Div-2/CF1313C/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-622-Div-2/CF1313C/" itemprop="commentCount"></span>
+    <a title="valine" href="/Template/String/KMP/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Template/String/KMP/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -240,17 +233,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="C-Skyscrapers"><a href="#C-Skyscrapers" class="headerlink" title="C. Skyscrapers"></a>C. Skyscrapers</h1><p><a href="https://codeforces.com/contest/1313/problem/C2" target="_blank" rel="noopener">原题传送门</a></p>
-<h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>第一行有一个整数 $n\ (1 \leq n \leq 500000)$，表示发展商购买了 $n$ 块地。</p>
-<p>第二行，$n$ 个整数 $m_1, m_2, \ldots, m_n\ (1 \leq m_i \leq 10^9)$，表示每块地上建摩天大厦层数的限制。</p>
-<p>求让每块地上摩天大厦的楼层数之和最大，而且存在最高点$a_i$，让它左边的楼递增，右边的楼递减。</p>
+        <h1 id="KMP字符串模式匹配-Knuth–Morris–Pratt-Algorithm"><a href="#KMP字符串模式匹配-Knuth–Morris–Pratt-Algorithm" class="headerlink" title="KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm"></a>KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm</h1><p><a href="https://www.luogu.com.cn/problem/P3375" target="_blank" rel="noopener">模板题</a></p>
+<h2 id="Brief-Introduction"><a href="#Brief-Introduction" class="headerlink" title="Brief Introduction"></a>Brief Introduction</h2><p>To be updated</p>
 <a id="more"></a>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$O(n^2)$的做法就不赘述了。</p>
-<p>关键在于在遍历最高点的时候，如何快速计算出其左右两边依次递减之和。</p>
-<p>首先可以想到遍历用线段树维护区间和，然后二分找到上一个比该节点大的点，后面全部区间染色成$m[i]$即可。复杂度$O(nlog^2n)$。代码可参见<a href="https://codeforces.com/contest/1313/submission/71693226" target="_blank" rel="noopener">Codeforces Submission</a>。</p>
-<p>然而实际上可以在构造线段树的同时，维护一个区间最大值，然后利用线段树自己的二分结构进行二分，同样区间染色。复杂度$o(nlogn)$。这个代码我没写QAQ。</p>
-<p>不过思考能否不维护一个完整的序列，发现可以用单调栈来维护$i$前面的单调上升的栈，然后利用类似DP的思想，利用栈顶元素已经求好的前缀和外加区间染色后的和。均摊复杂度为$O(n)$。代码如下。</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 500005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line">LL m[MAXN],ls[MAXN],rs[MAXN];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> n;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%lld"</span>, &amp;m[i]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(!st.empty() &amp;&amp; m[st.top()]&gt;m[i])</span><br><span class="line">			st.pop();</span><br><span class="line">		<span class="keyword">if</span>(!st.empty()) ls[i]=ls[st.top()]+m[i]*(i-st.top());</span><br><span class="line">		<span class="keyword">else</span> ls[i]=m[i]*i;</span><br><span class="line">		st.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	st=<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt;();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">while</span>(!st.empty() &amp;&amp; m[i]&lt;m[st.top()])</span><br><span class="line">			st.pop();</span><br><span class="line">		<span class="keyword">if</span>(!st.empty()) rs[i]=rs[st.top()]+m[i]*(st.top()-i);</span><br><span class="line">		<span class="keyword">else</span> rs[i]=m[i]*(n-i+<span class="number">1</span>);</span><br><span class="line">		st.push(i);</span><br><span class="line">	&#125;</span><br><span class="line">	LL mx=<span class="number">0</span>,mi=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		<span class="keyword">if</span>(ls[i]+rs[i]-m[i]&gt;mx)</span><br><span class="line">			mx=ls[i]+rs[i]-m[i], mi=i;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=mi<span class="number">-1</span>;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">		m[i]=<span class="built_in">min</span>(m[i],m[i+<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=mi+<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		m[i]=<span class="built_in">min</span>(m[i],m[i<span class="number">-1</span>]);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%lld "</span>, m[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="comment">// scanf("%d", &amp;T);</span></span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>To be updated</p>
+<h2 id="Template-Code"><a href="#Template-Code" class="headerlink" title="Template Code"></a>Template Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,cnt,next[MAXN];</span><br><span class="line"><span class="keyword">char</span> s1[MAXN],s2[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">kmp</span><span class="params">()</span></span>&#123;</span><br><span class="line">	next[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,k=<span class="number">-1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(k!=<span class="number">-1</span> &amp;&amp; s2[k]!=s2[i<span class="number">-1</span>])</span><br><span class="line">			k=next[k];</span><br><span class="line">		next[i]=++k;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,k=<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(~k &amp;&amp; s2[k]!=s1[i<span class="number">-1</span>])</span><br><span class="line">			k=next[k];</span><br><span class="line">		<span class="keyword">if</span>(m==++k)&#123;</span><br><span class="line">			cnt++;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, i-m+<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s %s"</span>, s1, s2);</span><br><span class="line">	n=<span class="built_in">strlen</span>(s1);</span><br><span class="line">	m=<span class="built_in">strlen</span>(s2);</span><br><span class="line">	kmp();</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%d "</span>, next[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -259,8 +247,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91-Segment-Tree/" rel="tag"># 线段树 Segment Tree</a>
-              <a href="/tags/%E5%8D%95%E8%B0%83%E6%A0%88-Monotonic-Stack/" rel="tag"># 单调栈 Monotonic Stack</a>
+              <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A8%A1%E5%BC%8F%E5%8C%B9%E9%85%8D-Knuth%E2%80%93Morris%E2%80%93Pratt-Algorithm/" rel="tag"># 字符串模式匹配 Knuth–Morris–Pratt Algorithm</a>
           </div>
 
         
@@ -269,13 +256,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/Codeforces/Round-622-Div-2/CF1313B/" rel="prev" title="CF1313B Different Rules">
-      <i class="fa fa-chevron-left"></i> CF1313B Different Rules
+    <a href="/Codeforces/Global-Round-7/CF1326/" rel="prev" title="Codeforces Global Round 7">
+      <i class="fa fa-chevron-left"></i> Codeforces Global Round 7
     </a></div>
-      <div class="post-nav-item">
-    <a href="/Template/Data-Structure/Scanline/" rel="next" title="扫描线 Scanline Rendering">
-      扫描线 Scanline Rendering <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -336,7 +320,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-Skyscrapers"><span class="nav-number">1.</span> <span class="nav-text">C. Skyscrapers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-Restatement"><span class="nav-number">1.1.</span> <span class="nav-text">Problem Restatement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP字符串模式匹配-Knuth–Morris–Pratt-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">KMP字符串模式匹配 Knuth–Morris–Pratt Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Brief-Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Brief Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Algorithm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Template-Code"><span class="nav-number">1.3.</span> <span class="nav-text">Template Code</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
