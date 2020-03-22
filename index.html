@@ -160,6 +160,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Global-Round-7/CF1326/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Leachim">
+      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leachim's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/Codeforces/Global-Round-7/CF1326/" class="post-title-link" itemprop="url">Codeforces Global Round 7</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-23 02:55:42 / Modified: 02:58:57" itemprop="dateCreated datePublished" datetime="2020-03-23T02:55:42+08:00">2020-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Global-Round-7/" itemprop="url" rel="index"><span itemprop="name">Global Round 7</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/Codeforces/Global-Round-7/CF1326/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Global Round 7" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/Codeforces/Global-Round-7/CF1326/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Global-Round-7/CF1326/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Codeforces-Global-Round-7"><a href="#Codeforces-Global-Round-7" class="headerlink" title="Codeforces Global Round 7"></a>Codeforces Global Round 7</h1><p><a href="https://codeforces.com/contest/1326" target="_blank" rel="noopener">比赛传送门</a></p>
+<p>简要总结下比赛情况。</p>
+<p>开局还是有点坑，CF官网炸了，然后镜像也炸了，磨蹭了几分钟才看到题，还只能在m1网上看QAQ。</p>
+<p>不过前期勉强算是顺利签到，至少都是首A。</p>
+<p>一看D，发现是个字符串的题（我字符串好多没学）。不过发现是个回文串判断，想都没想直接上hash。发现动态修改，直接拷贝了个线段树过来（我也不知道当时为啥脑残了没想到直接按位不需要线段树）。三下五除二（折腾了1个小时。。）似乎写完了，结果MLE制裁。强行压下来空间，然后WA pretest3.找了半天不知道哪错了。不管了换树状数组，又折腾了半个小时换了树状数组。终于A了D1（还不如写暴力，分都被扣的没几分了，我还想着这把上个段呢QAQ太惨了我）。结果D2在4测试点TLE了。。。。。我自己随手搞了个数据本地测了下，果然TLE3秒才出来。最开始以为是模数太大(1e9+9)，我换了一个小一点的质数（9191891），然后还是TLE。最后突然想起来可能是long long太慢了，我换成了int之后终于吧时间卡过去了，成功过了pretest。</p>
+<p>戏剧性的是。。。。比赛完了之后发现D2被FST了？？？，然后我把模数换回1e9+9，才A了。。。。居然自己坑了自己一把，为自己扣分扣爆埋下伏笔。虽然比赛结束之后一堆人在hack那些用简单hash的，包括我在内。现在的测试数据已经非常的强了，常见的模数和进制基本都用不了了😂。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Codeforces/Global-Round-7/CF1326/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Round-628-Div-2/CF1325/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1136,114 +1241,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Round-620-Div-2/CF1304B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Leachim">
-      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leachim's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Codeforces/Round-620-Div-2/CF1304B/" class="post-title-link" itemprop="url">CF1304B Longest Palindrome</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-04 21:48:03" itemprop="dateCreated datePublished" datetime="2020-03-04T21:48:03+08:00">2020-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-15 11:56:18" itemprop="dateModified" datetime="2020-03-15T11:56:18+08:00">2020-03-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Round-620-Div-2/" itemprop="url" rel="index"><span itemprop="name">Round 620 (Div. 2)</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/Codeforces/Round-620-Div-2/CF1304B/" class="post-meta-item leancloud_visitors" data-flag-title="CF1304B Longest Palindrome" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/Codeforces/Round-620-Div-2/CF1304B/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-620-Div-2/CF1304B/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="B-Longest-Palindrome"><a href="#B-Longest-Palindrome" class="headerlink" title="B. Longest Palindrome"></a>B. Longest Palindrome</h1><p><a href="https://codeforces.com/contest/1304/problem/B" target="_blank" rel="noopener">原题传送门</a></p>
-<h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>给出n个，长度为m的字符串。$(1≤𝑛≤100,1≤m≤50) $</p>
-<p>用部分或全部字符串，在一定的顺序拼接下，拼出最长的回文串。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Codeforces/Round-620-Div-2/CF1304B/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1316,14 +1313,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">

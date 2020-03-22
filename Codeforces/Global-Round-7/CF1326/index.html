@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"leachim.wang","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Codeforces Global Round 7比赛传送门 简要总结下比赛情况。 开局还是有点坑，CF官网炸了，然后镜像也炸了，磨蹭了几分钟才看到题，还只能在m1网上看QAQ。 不过前期勉强算是顺利签到，至少都是首A。 一看D，发现是个字符串的题（我字符串好多没学）。不过发现是个回文串判断，想都没想直接上hash。发现动态修改，直接拷贝了个线段树过来（我也不知道当时为啥脑残了没想到直接按位不需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Global Round 7">
+<meta property="og:url" content="leachim.wang/Codeforces/Global-Round-7/CF1326/">
+<meta property="og:site_name" content="Leachim&#39;s Blog">
+<meta property="og:description" content="Codeforces Global Round 7比赛传送门 简要总结下比赛情况。 开局还是有点坑，CF官网炸了，然后镜像也炸了，磨蹭了几分钟才看到题，还只能在m1网上看QAQ。 不过前期勉强算是顺利签到，至少都是首A。 一看D，发现是个字符串的题（我字符串好多没学）。不过发现是个回文串判断，想都没想直接上hash。发现动态修改，直接拷贝了个线段树过来（我也不知道当时为啥脑残了没想到直接按位不需要">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-22T18:55:42.000Z">
+<meta property="article:modified_time" content="2020-03-22T18:58:57.292Z">
+<meta property="article:author" content="Leachim">
+<meta property="article:tag" content="competitive programming">
+<meta property="article:tag" content=" algorithm">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="leachim.wang/Codeforces/Global-Round-7/CF1326/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true
+  };
+</script>
+
+  <title>Codeforces Global Round 7 | Leachim's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Leachim's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Global-Round-7/CF1326/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Leachim">
+      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leachim's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces Global Round 7
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-23 02:55:42 / Modified: 02:58:57" itemprop="dateCreated datePublished" datetime="2020-03-23T02:55:42+08:00">2020-03-23</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Global-Round-7/" itemprop="url" rel="index"><span itemprop="name">Global Round 7</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/Codeforces/Global-Round-7/CF1326/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Global Round 7" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/Codeforces/Global-Round-7/CF1326/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Global-Round-7/CF1326/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Codeforces-Global-Round-7"><a href="#Codeforces-Global-Round-7" class="headerlink" title="Codeforces Global Round 7"></a>Codeforces Global Round 7</h1><p><a href="https://codeforces.com/contest/1326" target="_blank" rel="noopener">比赛传送门</a></p>
+<p>简要总结下比赛情况。</p>
+<p>开局还是有点坑，CF官网炸了，然后镜像也炸了，磨蹭了几分钟才看到题，还只能在m1网上看QAQ。</p>
+<p>不过前期勉强算是顺利签到，至少都是首A。</p>
+<p>一看D，发现是个字符串的题（我字符串好多没学）。不过发现是个回文串判断，想都没想直接上hash。发现动态修改，直接拷贝了个线段树过来（我也不知道当时为啥脑残了没想到直接按位不需要线段树）。三下五除二（折腾了1个小时。。）似乎写完了，结果MLE制裁。强行压下来空间，然后WA pretest3.找了半天不知道哪错了。不管了换树状数组，又折腾了半个小时换了树状数组。终于A了D1（还不如写暴力，分都被扣的没几分了，我还想着这把上个段呢QAQ太惨了我）。结果D2在4测试点TLE了。。。。。我自己随手搞了个数据本地测了下，果然TLE3秒才出来。最开始以为是模数太大(1e9+9)，我换了一个小一点的质数（9191891），然后还是TLE。最后突然想起来可能是long long太慢了，我换成了int之后终于吧时间卡过去了，成功过了pretest。</p>
+<p>戏剧性的是。。。。比赛完了之后发现D2被FST了？？？，然后我把模数换回1e9+9，才A了。。。。居然自己坑了自己一把，为自己扣分扣爆埋下伏笔。虽然比赛结束之后一堆人在hack那些用简单hash的，包括我在内。现在的测试数据已经非常的强了，常见的模数和进制基本都用不了了😂。</p>
+<a id="more"></a>
+<h2 id="A-Bad-Ugly-Numbers"><a href="#A-Bad-Ugly-Numbers" class="headerlink" title="A. Bad Ugly Numbers"></a>A. Bad Ugly Numbers</h2><p><a href="https://codeforces.com/contest/1326/problem/A" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>给出一个整数$n$，请你构造一个正整数$s$使得十进制中$s$的位数为$n$，并且</p>
+<p>​    1、每一位都不为$0$</p>
+<p>​    2、被每一位的数字整除</p>
+<p>$(1≤n≤10^5)$</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>很明显就构造$2999…9$或者$23333…3$即可。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><p>签到题就不重新写代码了<del>（懒）</del><a href="https://codeforces.com/contest/1326/submission/73665949" target="_blank" rel="noopener">代码传送门</a></p>
+<h2 id="B-Maximums"><a href="#B-Maximums" class="headerlink" title="B. Maximums"></a>B. Maximums</h2><p><a href="https://codeforces.com/contest/1326/problem/B" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="Problem-Restatement-1"><a href="#Problem-Restatement-1" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>对于一个长度为$n$的自然数序列$a$，定义一个长度为$n$的序列$b$满足，$b_i=a_i-\max(0,a_1,…,a_{i-1})$</p>
+<p>现在给出序列$b$，请你反推回序列$a$。</p>
+<p>$(1≤𝑛≤2\times 10^5 , -10^9≤b_𝑖≤10^9) $，数据保证有自然数序列解。</p>
+<h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>我们移项之后就会发现$a_i=b_i+\max(0,a_1,…,a_{i-1})$是个状态转移方程，按位求就好。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><p>还是放现场代码<a href="https://codeforces.com/contest/1326/submission/73672160" target="_blank" rel="noopener">代码传送门</a></p>
+<h2 id="C-Permutation-Partitions"><a href="#C-Permutation-Partitions" class="headerlink" title="C. Permutation Partitions"></a>C. Permutation Partitions</h2><p><a href="https://codeforces.com/contest/1326/problem/C" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="Problem-Restatement-2"><a href="#Problem-Restatement-2" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>给你一个长度为$n$的全排列$p_1,p_2,…,p_n$，让你严格分割成$k$个非空区间。使得划分的$k$个区间中，（每个区间的最大值）之和最大。输出这个<strong>求和的最大值</strong>和<strong>有多少种这样的划分</strong>。后者对$998244353$取模。</p>
+<p>$(1≤𝑘≤𝑛≤2\times10^5)$</p>
+<h3 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h3><p>既然全排列分割成$k$份，很明显如果要让每个区间最大值之和最大，就是让每个区间的最大值最大就好。也就是让这$k$个区间，每个区间独占一个$n$个数之中最大的$k$个数。</p>
+<p>所以第一步肯定是找出来$n$个数中最大的$k$个数的位置。</p>
+<p>然后考虑分割成$k$个非空区间，其实相当于在$n-1$个空隙中切$k-1$刀。而我们锁定了$k$个最大数的位置之后，其实相当于锁定了每一刀切的范围。</p>
+<p>举个例子：$n=10,k=4,a=\{8,3,4,9,5,1,7,10,2,6\}$</p>
+<p>标记最大数:$\{\textbf 8,3,4,\textbf 9,5,1,\textbf7,\textbf{10},2,6\}$</p>
+<p>发现切的位置就是$8-9,9-7,7-10$这三处地方，分别有$3,3,1$种切法。</p>
+<p>利用乘法原理可以算出来最多有多少种这样的划分，即$3\times 3\times 1=9$种。</p>
+<h3 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h3><p>具体实现用了一下C++ STL里面的map，写的还算是挺好看的吧。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 200005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MOD 998244353</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,k,a[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; mp;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;k);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]);</span><br><span class="line">		mp[a[i]]=i;</span><br><span class="line">		<span class="keyword">if</span>(mp.<span class="built_in">size</span>()&gt;k) mp.erase(mp.<span class="built_in">begin</span>());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</span><br><span class="line">	LL sum=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">auto</span> p:mp)&#123;</span><br><span class="line">		v.push_back(p.second);</span><br><span class="line">		sum+=p.first;</span><br><span class="line">	&#125;</span><br><span class="line">	sort(v.<span class="built_in">begin</span>(),v.<span class="built_in">end</span>());</span><br><span class="line">	<span class="keyword">int</span> ans=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;k;i++)&#123;</span><br><span class="line">		ans=(<span class="number">1L</span>L*ans*(v[i]-v[i<span class="number">-1</span>]))%MOD;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%lld %d\n"</span>,sum,ans);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="comment">// scanf("%d", &amp;T);</span></span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="D-Prefix-Suffix-Palindrome"><a href="#D-Prefix-Suffix-Palindrome" class="headerlink" title="D. Prefix-Suffix Palindrome"></a>D. Prefix-Suffix Palindrome</h2><p><a href="https://codeforces.com/problemset/problem/1326/D2" target="_blank" rel="noopener">题目传送门</a></p>
+<h3 id="Problem-Restatement-3"><a href="#Problem-Restatement-3" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h3><p>给你一个由小写字母组成的字符串$s$，让你求一个字符串$t$。使得$t$是一个回文串，且$t$能表示为$s$的一个前缀+$s$的一个后缀，并且$|t|\leq|s|$。</p>
+<p>$(1≤|s|≤10^{6})$</p>
+<h3 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h3><p>很明显，如果$s$有一个长度$k$的前缀$\text {pre}(s,k)$的逆串刚好是$s$的后缀，那么我们找到最大的这样一个长度$k$。至少可以构造一个长度为$2k$的字符串$t$满足要求。</p>
+<p>接着我们很容易发现，如果要构造更长的，我们必须要用到这长度为$k$的前后缀，所以不妨先线性时间判断出来最长的$k$并剔除出$s$字符串。</p>
+<p>我们对剩下的字符串，不妨设为$s’$，进行分析，发现我们的目的是找到一个最长的回文前缀或后缀。</p>
+<p>那么第一个思路就很容易想到了——哈希。我们知道，一个回文串的逆串等于它本身。所以判断一个串是否为回文串，可以求出它的hash值和它逆串的hash值，O(1)对比两个hash值即可。我们知道，求最长回文前缀可以一位一位的扩充hash，所以总hash时间是线性的。前缀后缀各扫并一次回文串即可，复杂度$O(|s|)$，但是太简单的hash后期会被有心人给hack掉，不过比赛时间不够写多hash，所以搏一搏，单车变摩托。这里仅给出求最长回文前缀的核心代码，不多啰嗦。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=x;i&lt;=len-x<span class="number">-1</span>;i++)&#123;</span><br><span class="line">    hsh1=(<span class="number">1L</span>L*hsh1*<span class="number">2179</span>%p+(s[i]-<span class="string">'a'</span>+<span class="number">1</span>))%p;</span><br><span class="line">    hsh2=(<span class="number">1L</span>L*t*(s[i]-<span class="string">'a'</span>+<span class="number">1</span>)%p+hsh2)%p;</span><br><span class="line">    t=(<span class="number">1L</span>L*t*<span class="number">2179</span>)%p;</span><br><span class="line">    <span class="keyword">if</span>(hsh1 == hsh2)</span><br><span class="line">        mx1=<span class="built_in">max</span>(mx1,i-x+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>第二个思路则比较巧妙。如果我们构造新的字符串$s’’=s’+’@’+ \overline {s’}$，其中$\overline {s’}$是指$s’$的逆串。我们会发现，我们所求的$s’$的最长回文前缀，转换成了求$s’’$的最长boarder（boarder就是字符串的一个非本身的前缀，满足存在该字符串的后缀与之相等。）。显而易见学过KMP算法的就会想起来KMP的next数组就是存字符串最长前缀。所以我们跑半个KMP（只跑求next的部分）就可以了。复杂度$O(|s|)$。完整代码如下。</p>
+<h3 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LL long long</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 1000005</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> s[MAXN],rs[MAXN],ss[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"><span class="keyword">int</span> nxt[MAXN&lt;&lt;<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%s"</span>, s);</span><br><span class="line">	<span class="keyword">int</span> len=<span class="built_in">strlen</span>(s),x;</span><br><span class="line">	<span class="keyword">for</span>(x=<span class="number">0</span>;x&lt;len/<span class="number">2</span>;x++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(s[x]!=s[len-x<span class="number">-1</span>]) <span class="keyword">break</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(x==len/<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, s);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> n=len<span class="number">-2</span>*x;</span><br><span class="line">	<span class="keyword">int</span> mx1=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		ss[i]=s[x+i];</span><br><span class="line">		ss[n+i+<span class="number">1</span>]=s[x+n-i<span class="number">-1</span>];</span><br><span class="line">	&#125;</span><br><span class="line">	ss[n]=<span class="string">'#'</span>;</span><br><span class="line">	nxt[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,k=<span class="number">-1</span>;i&lt;=<span class="number">2</span>*n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(k!=<span class="number">-1</span> &amp;&amp; ss[k]!=ss[i<span class="number">-1</span>])</span><br><span class="line">			k=nxt[k];</span><br><span class="line">		nxt[i]=++k;</span><br><span class="line">	&#125;</span><br><span class="line">	mx1=nxt[<span class="number">2</span>*n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">int</span> mx2=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">		ss[i]=s[x+n-i<span class="number">-1</span>];</span><br><span class="line">		ss[n+i+<span class="number">1</span>]=s[x+i];</span><br><span class="line">	&#125;</span><br><span class="line">	ss[n]=<span class="string">'#'</span>;</span><br><span class="line">	nxt[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,k=<span class="number">-1</span>;i&lt;=<span class="number">2</span>*n+<span class="number">1</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">while</span>(k!=<span class="number">-1</span> &amp;&amp; ss[k]!=ss[i<span class="number">-1</span>])</span><br><span class="line">			k=nxt[k];</span><br><span class="line">		nxt[i]=++k;</span><br><span class="line">	&#125;</span><br><span class="line">	mx2=nxt[<span class="number">2</span>*n+<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">if</span>(mx1&gt;=mx2)&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;x+mx1;i++)&#123;</span><br><span class="line">			<span class="built_in">putchar</span>(s[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">			<span class="built_in">putchar</span>(s[i]);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=len<span class="number">-1</span>;i&gt;len-x<span class="number">-1</span>-mx2;i--)&#123;</span><br><span class="line">			<span class="built_in">putchar</span>(s[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=x<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">			<span class="built_in">putchar</span>(s[i]);</span><br><span class="line">		<span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span>, &amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		solve();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/Codeforces/Round-628-Div-2/CF1325/" rel="prev" title="Codeforces Round 628 (Div. 2)">
+      <i class="fa fa-chevron-left"></i> Codeforces Round 628 (Div. 2)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Codeforces-Global-Round-7"><span class="nav-number">1.</span> <span class="nav-text">Codeforces Global Round 7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Bad-Ugly-Numbers"><span class="nav-number">1.1.</span> <span class="nav-text">A. Bad Ugly Numbers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Restatement"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem Restatement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.1.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.1.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Maximums"><span class="nav-number">1.2.</span> <span class="nav-text">B. Maximums</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Restatement-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Problem Restatement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Permutation-Partitions"><span class="nav-number">1.3.</span> <span class="nav-text">C. Permutation Partitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Restatement-2"><span class="nav-number">1.3.1.</span> <span class="nav-text">Problem Restatement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-2"><span class="nav-number">1.3.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-2"><span class="nav-number">1.3.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Prefix-Suffix-Palindrome"><span class="nav-number">1.4.</span> <span class="nav-text">D. Prefix-Suffix Palindrome</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-Restatement-3"><span class="nav-number">1.4.1.</span> <span class="nav-text">Problem Restatement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-3"><span class="nav-number">1.4.2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-3"><span class="nav-number">1.4.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Leachim"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Leachim</p>
+  <div class="site-description" itemprop="description">A personal blog for algorithms in competitive programming.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Michealwmx" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Michealwmx" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://codeforces.com/profile/wmxwmx" title="Codeforces → https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;wmxwmx" rel="noopener" target="_blank"><i class="fa fa-fw fa-codeforces"></i>Codeforces</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://cnblogs.com/leachim/" title="Cnblogs → https:&#x2F;&#x2F;cnblogs.com&#x2F;leachim&#x2F;" rel="noopener" target="_blank"><i class="fa fa-fw fa-cnblogs"></i>Cnblogs</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://leachim.wang/" title="http:&#x2F;&#x2F;leachim.wang">Blog</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mengxi Wang</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'ONbQWK2LS4IoC3qUcLNLsCgE-gzGzoHsz',
+      appKey     : 'M2iFBJBLEBbDCzh9k9ThWRTc',
+      placeholder: "Leave a Comment",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>
