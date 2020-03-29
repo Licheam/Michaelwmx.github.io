@@ -160,6 +160,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Educational-Round-84/CF1327/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Leachim">
+      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Leachim's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/Codeforces/Educational-Round-84/CF1327/" class="post-title-link" itemprop="url">Educational Codeforces Round 84</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-29 20:58:48 / Modified: 21:00:10" itemprop="dateCreated datePublished" datetime="2020-03-29T20:58:48+08:00">2020-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round-84/" itemprop="url" rel="index"><span itemprop="name">Educational Round 84</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/Codeforces/Educational-Round-84/CF1327/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Codeforces Round 84" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/Codeforces/Educational-Round-84/CF1327/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Educational-Round-84/CF1327/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Educational-Codeforces-Round-84"><a href="#Educational-Codeforces-Round-84" class="headerlink" title="Educational Codeforces Round 84"></a>Educational Codeforces Round 84</h1><p><a href="https://codeforces.com/contest/1327" target="_blank" rel="noopener">比赛传送门</a></p>
+<p>简要总结下比赛情况。</p>
+<p>正常开局4min A题（话说我发现4min似乎是我A第一题的瓶颈时间了，无论题目多简单，我都至少要4min来读题写题QAQ）</p>
+<p>B题说实话，有点长。。不过幸好我看了一眼图就去看读入输出了，读完基本懂了一半，扫读题意之后就大致明白题意。（当时差点以为是个二分图匹配的匈牙利算法😂。总之发现是个弱智题就写完A了，13min</p>
+<p>本来这个开局不错，结果看C。第一反应是什么神仙题，多点寻路？我最开始以为要想出最优解才能做，于是想着把每个点始末位置构造一个向量，然后查询有多少条曼哈顿路径之类的。结果突然发现题目有限制$n\times m$，我傻了，有的人卡在墙边就不动了，我还得实时更新？？？于是我开始考虑是不是个贪心的模拟。。。突然系统弹出Announcement说C题不需要最短（说实话以前我是不看公告的，这次居然破例看了，太幸运了）。于是我想到一个极端情况，全部都归成一个点，然后再对于每个点找。结果不知道怎么回事，我以为归成一个点的操作数最多是$n\times m$ .结果我又否决了，害得我前前后后拖了好久，最后才恍然大悟是$n+m$。简直算是脑抽了，导致44min才签到完C题。</p>
+<p>难受的我趁着评测，看了一眼排名，诡异的发现E题居然比D题AC的人多。我思考了两秒，果断跳D看E（赛后证明这是个异常正确的决定）。极短的E题，还真是个水题。是个小学生都会的排列组合，匆匆忙忙在1h时AC了E终于回到了D。</p>
+<p>D题真的绕得不行。不过看懂的时候突然发现这个好像是上学期高代讲过的置换群。所以这题考查的似乎是置换群的。置换群的阶好像和置换群大小的因子有关。于是试了几下发现好像的确是因子的次方下会形成新的环。但是却一直没想到怎么用代码在合适的时间内实现，等到想的差不多的时候时间已经没了QAQ。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/Codeforces/Educational-Round-84/CF1327/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="leachim.wang/Template/String/KMP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1132,113 +1238,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
-    <link itemprop="mainEntityOfPage" href="leachim.wang/Codeforces/Round-620-Div-2/CF1304D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Leachim">
-      <meta itemprop="description" content="A personal blog for algorithms in competitive programming.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Leachim's Blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/Codeforces/Round-620-Div-2/CF1304D/" class="post-title-link" itemprop="url">CF1304D Shortest and Longest LIS</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-03-04 21:50:15" itemprop="dateCreated datePublished" datetime="2020-03-04T21:50:15+08:00">2020-03-04</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-03-15 11:56:06" itemprop="dateModified" datetime="2020-03-15T11:56:06+08:00">2020-03-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index"><span itemprop="name">Codeforces</span></a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Round-620-Div-2/" itemprop="url" rel="index"><span itemprop="name">Round 620 (Div. 2)</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/Codeforces/Round-620-Div-2/CF1304D/" class="post-meta-item leancloud_visitors" data-flag-title="CF1304D Shortest and Longest LIS" title="Views">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">Views: </span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="fa fa-comment-o"></i>
-      </span>
-      <span class="post-meta-item-text">Valine: </span>
-    
-    <a title="valine" href="/Codeforces/Round-620-Div-2/CF1304D/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-620-Div-2/CF1304D/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="D-Shortest-and-Longest-LIS"><a href="#D-Shortest-and-Longest-LIS" class="headerlink" title="D. Shortest and Longest LIS"></a>D. Shortest and Longest LIS</h1><p><a href="https://codeforces.com/contest/1304/problem/D" target="_blank" rel="noopener">原题传送门</a></p>
-<h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>给出一个序列相邻的大小关系，构造相应长度满足大小关系的<strong>排列</strong>，使得最长上升子序列最短或最长。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/Codeforces/Round-620-Div-2/CF1304D/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1311,14 +1310,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
