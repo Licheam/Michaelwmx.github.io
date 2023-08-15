@@ -14,11 +14,11 @@
 
 
 <link rel="stylesheet" href="/Michaelwmx.github.io/lib/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="/Michaelwmx.github.io//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"leachim.wang/Michaelwmx.github.io","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"leachim.wang/Michaelwmx.github.io","root":"/Michaelwmx.github.io/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="F. Animal Observation原题传送门 Problem Restatement给出一个$n\times m$的自然数矩阵，给定$k$。在矩阵的每一行选一个点，作为左上角，放置一个$2\times k$的矩阵块（如果是最后一行，则放置$1\times k$的矩阵块）。现在要使得，这些矩阵块所覆盖自然数之和最大，求最大值。 $(1≤𝑛≤50,\ 1≤k\leq 𝑚≤2⋅10^4,\">
@@ -211,7 +211,7 @@
             </span>
 
           
-            <span id="/Codeforces/Round-620-Div-2/CF1304F/" class="post-meta-item leancloud_visitors" data-flag-title="CF1304F Animal Observation" title="Views">
+            <span id="/Michaelwmx.github.io/Codeforces/Round-620-Div-2/CF1304F/" class="post-meta-item leancloud_visitors" data-flag-title="CF1304F Animal Observation" title="Views">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -227,7 +227,7 @@
       <span class="post-meta-item-text">Valine: </span>
     
     <a title="valine" href="/Michaelwmx.github.io/Codeforces/Round-620-Div-2/CF1304F/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/Codeforces/Round-620-Div-2/CF1304F/" itemprop="commentCount"></span>
+      <span class="post-comments-count valine-comment-count" data-xid="/Michaelwmx.github.io/Codeforces/Round-620-Div-2/CF1304F/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -246,7 +246,7 @@
 <h2 id="Problem-Restatement"><a href="#Problem-Restatement" class="headerlink" title="Problem Restatement"></a>Problem Restatement</h2><p>给出一个$n\times m$的自然数矩阵，给定$k$。在矩阵的每一行选一个点，作为左上角，放置一个$2\times k$的矩阵块（如果是最后一行，则放置$1\times k$的矩阵块）。现在要使得，这些矩阵块所覆盖自然数之和最大，求最大值。</p>
 <p>$(1≤𝑛≤50,\ 1≤k\leq 𝑚≤2⋅10^4,\ 0\leq a_{ij}\leq 1000) $</p>
 <p>如图便是一个$4\times 5$的矩阵，其中$k=2$，即$2\times 2$的矩阵块（红色和蓝色为矩阵块）为，该放置的所求即为其覆盖的数字之和（重复的只计算一遍）。</p>
-<img data-src="/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png" class="" title="Test Case 1">
+<img data-src="/Michaelwmx.github.io/Codeforces/Round-620-Div-2/CF1304F/CF1304F_1.png" class="" title="Test Case 1">
 <a id="more"></a>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>从<strong>分治（<del>动态规划</del>）</strong>的角度思考，也就是每一行每一列之间的转移。</p>
 <p>定义$dp[i][j]$为只考虑原矩阵有$i\times m$个元素的时候，选择第$i$行的第$j$个元素作为第$i$行的矩阵块左上角元素时，覆盖数之和最大值。</p>
@@ -358,7 +358,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Leachim"
-      src="/images/avatar.png">
+      src="/Michaelwmx.github.io/images/avatar.png">
   <p class="site-author-name" itemprop="name">Leachim</p>
   <div class="site-description" itemprop="description">A personal blog for algorithms in competitive programming.</div>
 </div>
@@ -457,22 +457,22 @@
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+  <script src="/Michaelwmx.github.io/lib/anime.min.js"></script>
+  <script src="/Michaelwmx.github.io//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="/Michaelwmx.github.io//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="/Michaelwmx.github.io//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="/Michaelwmx.github.io/lib/velocity/velocity.min.js"></script>
+  <script src="/Michaelwmx.github.io/lib/velocity/velocity.ui.min.js"></script>
 
-<script src="/js/utils.js"></script>
+<script src="/Michaelwmx.github.io/js/utils.js"></script>
 
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
+<script src="/Michaelwmx.github.io/js/motion.js"></script>
 
 
-<script src="/js/next-boot.js"></script>
+<script src="/Michaelwmx.github.io/js/schemes/pisces.js"></script>
+
+
+<script src="/Michaelwmx.github.io/js/next-boot.js"></script>
 
 
 
